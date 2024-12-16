@@ -1,0 +1,19 @@
+# استخدام صورة Node.js الرسمية
+FROM node:18-alpine
+
+# تحديد مجلد العمل داخل الحاوية
+WORKDIR /app
+
+
+# نسخ ملفات package.json وتثبيت الاعتمادات
+COPY package*.json ./
+RUN npm install
+
+# نسخ الكود إلى الحاوية
+COPY . .
+
+# فتح المنفذ 5000
+EXPOSE 5000
+
+# تشغيل التطبيق
+CMD ["node", "server.js"]
